@@ -1,0 +1,14 @@
+add_action( 'wp_footer', function(){
+	$booking_ids = WC_Booking_Data_Store::get_booking_ids_by([
+		'status'      => get_wc_booking_statuses( 'user' ),
+		'object_id'   => 1,
+		'object_type' => 'customer',
+		'order_by'    => 'start_date',
+		'order'       => 'ASC',
+		'date_after'  => current_time( 'timestamp' ),
+	]);
+	// 	'date_before' => current_time( 'timestamp' ),
+	// Past_booking
+	var_dump($booking_ids);
+
+});
